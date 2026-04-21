@@ -1,0 +1,92 @@
+[
+  {
+    "id": "P001",
+    "name": "Wireless Noise-Cancelling Headphones",
+    "price": 8200.0,
+    "stock": 25,
+    "category": "Electronics",
+    "description": "Premium over-ear headphones with active noise cancellation, 30-hour battery, and foldable design.",
+    "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80"
+  },
+  {
+    "id": "P002",
+    "name": "Mechanical Gaming Keyboard",
+    "price": 9000.0,
+    "stock": 18,
+    "category": "Electronics",
+    "description": "Tenkeyless mechanical keyboard with RGB backlight, tactile blue switches, and aluminium frame.",
+    "image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80"
+  },
+  {
+    "id": "P003",
+    "name": "Running Shoes Pro",
+    "price": 7500.0,
+    "stock": 28,
+    "category": "Footwear",
+    "description": "Lightweight breathable mesh running shoes with responsive foam cushioning and anti-slip outsole.",
+    "image_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80"
+  },
+  {
+    "id": "P004",
+    "name": "Stainless Steel Water Bottle",
+    "price": 1600.0,
+    "stock": 49,
+    "category": "Kitchen",
+    "description": "Double-walled vacuum insulated 1L bottle. Keeps drinks cold 24 hrs or hot 12 hrs. BPA-free.",
+    "image_url": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80"
+  },
+  {
+    "id": "P005",
+    "name": "Python Programming: From Beginner to Expert",
+    "price": 2500.0,
+    "stock": 40,
+    "category": "Books",
+    "description": "Comprehensive guide covering core Python, OOP, data science libraries, Flask, and real-world projects.",
+    "image_url": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&q=80"
+  },
+  {
+    "id": "P006",
+    "name": "Ergonomic Office Chair",
+    "price": 20000.0,
+    "stock": 10,
+    "category": "Furniture",
+    "description": "Fully adjustable lumbar support chair with breathable mesh back, armrests, and 5-year warranty.",
+    "image_url": "https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=400&q=80"
+  },
+  {
+    "id": "P007",
+    "name": "Yoga Mat with Carrying Strap",
+    "price": 2800.0,
+    "stock": 35,
+    "category": "Sports",
+    "description": "6mm thick non-slip TPE yoga mat with alignment lines. Eco-friendly and sweat-resistant.",
+    "image_url": "https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=400&q=80"
+  },
+  {
+    "id": "P008",
+    "name": "Portable Bluetooth Speaker",
+    "price": 6000.0,
+    "stock": 22,
+    "category": "Electronics",
+    "description": "Waterproof IPX7 speaker with 360° surround sound, 12-hour playtime, and built-in microphone.",
+    "image_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&q=80"
+  },
+  {
+    "id": "P009",
+    "name": "Ceramic Coffee Pour-Over Set",
+    "price": 6000.0,
+    "stock": 1,
+    "category": "Kitchen",
+    "description": "Handcrafted ceramic dripper with server and paper filters. Makes rich, smooth pour-over coffee.",
+    "image_url": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80"
+  },
+  {
+    "id": "P010",
+    "name": "Leather Minimalist Wallet",
+    "price": 1000.0,
+    "stock": 0,
+    "category": "Accessories",
+    "description": "Slim bifold genuine leather wallet. Holds up to 8 cards and cash. RFID blocking layer included.",
+    "image_url": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400&q=80"
+  }
+]

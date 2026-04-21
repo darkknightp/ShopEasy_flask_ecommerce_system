@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Checkout — ShopEasy{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-4 gap-2">
+  <i class="bi bi-bag-check fs-3 text-primary"></i>
+  <h2 class="mb-0 fw-bold">Checkout</h2>
+</div>
+
+<div class="row g-4">
+
+  <!-- ============================================================== -->
+  <!-- CHECKOUT FORM                                                   -->
+  <!-- ============================================================== -->
+  <div class="col-lg-7">
+    <div class="card shadow-sm">
+      <div class="card-header fw-semibold">
+        <i class="bi bi-person-circle me-2"></i>Your Details
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{{ url_for('checkout') }}">
+          <div class="mb-3">
+            <label for="customer_name" class="form-label fw-semibold">
+              Full Name <span class="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              id="customer_name"
+              name="customer_name"
+              class="form-control form-control-lg"
+              placeholder="e.g. Aswin Kumar"
+              required
+              autofocus
+            />
+            <div class="form-text">We use your name to label your order.</div>
+          </div>
+
+          <hr class="my-4" />
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold fs-5">Order Total</span>
+            <span class="fw-bold fs-4 text-primary">₹{{ "%.2f"|format(total) }}</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg w-100">
+            <i class="bi bi-lock me-2"></i>Place Order
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- ORDER REVIEW                                                    -->
+  <!-- ============================================================== -->
+  <div class="col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-header fw-semibold">
+        <i class="bi bi-list-check me-2"></i>Order Review
+      </div>
+      <div class="card-body p-0">
+        <ul class="list-group list-group-flush">
+          {% for item in cart_items %}
+          <li class="list-group-item d-flex align-items-center gap-3 py-3">
+            {% if item.product.image_url %}
+              <img
+                src="{{ item.product.image_url }}"
+                alt="{{ item.product.name }}"
+                class="rounded-2"
+                style="width:50px; height:50px; object-fit:cover;"
+              />
+            {% endif %}
+            <div class="flex-grow-1">
+              <p class="mb-0 fw-semibold small">{{ item.product.name }}</p>
+              <p class="mb-0 text-muted small">Qty: {{ item.quantity }} × ₹{{ "%.2f"|format(item.product.price) }}</p>
+            </div>
+            <span class="fw-semibold">₹{{ "%.2f"|format(item.subtotal) }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="card-footer d-flex justify-content-between fw-bold">
+          <span>Total</span>
+          <span class="text-primary">₹{{ "%.2f"|format(total) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="{{ url_for('cart') }}" class="btn btn-outline-secondary w-100 mt-3">
+      <i class="bi bi-pencil me-1"></i>Edit Cart
+    </a>
+  </div>
+
+</div>
+{% endblock %}

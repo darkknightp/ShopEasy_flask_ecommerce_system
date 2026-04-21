@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}ShopEasy{% endblock %}</title>
+
+  <!-- Bootstrap 5 -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Bootstrap Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+  <!-- ================================================================ -->
+  <!-- NAVBAR                                                            -->
+  <!-- ================================================================ -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="{{ url_for('products') }}">
+        <i class="bi bi-bag-heart-fill me-2"></i>ShopEasy
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item">
+            <a class="nav-link {% if request.endpoint == 'products' %}active{% endif %}"
+               href="{{ url_for('products') }}">
+              <i class="bi bi-grid me-1"></i>Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.endpoint == 'orders' %}active{% endif %}"
+               href="{{ url_for('orders') }}">
+              <i class="bi bi-clock-history me-1"></i>Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn-cart {% if request.endpoint == 'cart' %}active{% endif %}"
+               href="{{ url_for('cart') }}">
+              <i class="bi bi-cart3 me-1"></i>Cart
+              {% if cart_count > 0 %}
+                <span class="badge bg-warning text-dark ms-1">{{ cart_count }}</span>
+              {% endif %}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================================================================ -->
+  <!-- FLASH MESSAGES                                                    -->
+  <!-- ================================================================ -->
+  <div class="container mt-3">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <i class="bi
+              {% if category == 'success' %}bi-check-circle-fill
+              {% elif category == 'danger' %}bi-exclamation-triangle-fill
+              {% elif category == 'warning' %}bi-exclamation-circle-fill
+              {% else %}bi-info-circle-fill{% endif %} me-2"></i>
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- MAIN CONTENT                                                      -->
+  <!-- ================================================================ -->
+  <main class="container my-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ================================================================ -->
+  <!-- FOOTER                                                            -->
+  <!-- ================================================================ -->
+  <footer class="text-center py-4 mt-5">
+    <p class="mb-0 text-muted small">
+      &copy; 2024 ShopEasy &mdash; Academic Project &mdash; Built with Flask &amp; Bootstrap
+    </p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Order #{{ order.order_id }} Confirmed — ShopEasy{% endblock %}
+
+{% block content %}
+
+<!-- Confirmation banner -->
+<div class="text-center py-5">
+  <div class="confirmation-icon mb-4">
+    <i class="bi bi-check-circle-fill text-success" style="font-size:5rem;"></i>
+  </div>
+  <h2 class="fw-bold">Thank you, {{ order.customer_name }}!</h2>
+  <p class="lead text-muted mb-1">Your order has been placed successfully.</p>
+  <p class="text-muted small">Placed on {{ order.timestamp }}</p>
+</div>
+
+<!-- Order details card -->
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+
+    <div class="card shadow-sm mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span class="fw-semibold">
+          <i class="bi bi-receipt me-2"></i>Order Details
+        </span>
+        <span class="badge bg-success fs-6">Order #{{ order.order_id }}</span>
+      </div>
+      <div class="card-body p-0">
+        <table class="table mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Product</th>
+              <th class="text-center">Qty</th>
+              <th class="text-end">Unit Price</th>
+              <th class="text-end">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in order.items %}
+            <tr>
+              <td class="fw-semibold">{{ item.name }}</td>
+              <td class="text-center">{{ item.quantity }}</td>
+              <td class="text-end">₹{{ "%.2f"|format(item.price) }}</td>
+              <td class="text-end">₹{{ "%.2f"|format(item.subtotal) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot class="table-light">
+            <tr>
+              <th colspan="3" class="text-end">Grand Total</th>
+              <th class="text-end text-primary fs-5">₹{{ "%.2f"|format(order.total_price) }}</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="d-flex gap-3 justify-content-center">
+      <a href="{{ url_for('products') }}" class="btn btn-primary">
+        <i class="bi bi-grid me-2"></i>Continue Shopping
+      </a>
+      <a href="{{ url_for('orders') }}" class="btn btn-outline-secondary">
+        <i class="bi bi-clock-history me-2"></i>View Order History
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

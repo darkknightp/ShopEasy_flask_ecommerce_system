@@ -1,0 +1,239 @@
+/* =========================================================
+   ShopEasy — Custom Stylesheet
+   Font: Sora (Google Fonts)
+   ========================================================= */
+
+/* -----------------------------------------------------------
+   CSS VARIABLES
+   ----------------------------------------------------------- */
+:root {
+  --primary:       #4f46e5;   /* Indigo */
+  --primary-dark:  #3730a3;
+  --accent:        #f59e0b;   /* Amber */
+  --surface:       #f8f9ff;
+  --card-bg:       #ffffff;
+  --text:          #1e1b4b;
+  --muted:         #6b7280;
+  --border:        #e5e7eb;
+  --radius:        12px;
+  --shadow:        0 2px 16px rgba(79,70,229,.08);
+}
+
+/* -----------------------------------------------------------
+   BASE
+   ----------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background-color: var(--surface);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a { color: var(--primary); }
+a:hover { color: var(--primary-dark); }
+
+/* -----------------------------------------------------------
+   NAVBAR
+   ----------------------------------------------------------- */
+.navbar {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: .75rem 0;
+  box-shadow: 0 2px 12px rgba(79,70,229,.3);
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+}
+
+.navbar .nav-link {
+  color: rgba(255,255,255,.85) !important;
+  font-size: .875rem;
+  font-weight: 500;
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  transition: background .18s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  background: rgba(255,255,255,.15);
+  color: #fff !important;
+}
+
+/* -----------------------------------------------------------
+   HERO BANNER
+   ----------------------------------------------------------- */
+.hero-banner {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+  border: 1px solid #c7d2fe;
+}
+
+/* -----------------------------------------------------------
+   PRODUCT CARDS
+   ----------------------------------------------------------- */
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform .2s ease, box-shadow .2s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(79,70,229,.14);
+}
+
+.product-img-wrap {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.06);
+}
+
+.no-image {
+  width: 100%;
+  height: 100%;
+}
+
+.category-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(79,70,229,.85);
+  color: #fff;
+  font-size: .72rem;
+  border-radius: 6px;
+  padding: 3px 8px;
+  backdrop-filter: blur(4px);
+}
+
+.product-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* -----------------------------------------------------------
+   BUTTONS
+   ----------------------------------------------------------- */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* -----------------------------------------------------------
+   CART ITEMS
+   ----------------------------------------------------------- */
+.cart-item-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.cart-no-img {
+  width: 60px;
+  height: 60px;
+  background: #f3f4f6;
+}
+
+/* -----------------------------------------------------------
+   CARDS (generic)
+   ----------------------------------------------------------- */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.card-header {
+  background: #f3f4f6;
+  border-bottom: 1px solid var(--border);
+  padding: .85rem 1.25rem;
+}
+
+/* -----------------------------------------------------------
+   ORDER HISTORY CARD
+   ----------------------------------------------------------- */
+.order-history-card .card-header {
+  background: linear-gradient(90deg, #eef2ff 0%, #fff 100%);
+}
+
+/* -----------------------------------------------------------
+   ALERTS
+   ----------------------------------------------------------- */
+.alert {
+  border-radius: var(--radius);
+  font-size: .9rem;
+}
+
+/* -----------------------------------------------------------
+   FOOTER
+   ----------------------------------------------------------- */
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+/* -----------------------------------------------------------
+   FORM CONTROLS
+   ----------------------------------------------------------- */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 .2rem rgba(79,70,229,.2);
+}
+
+/* -----------------------------------------------------------
+   BADGE UTILITIES
+   ----------------------------------------------------------- */
+.bg-success-subtle {
+  background-color: #d1fae5;
+}
+
+/* -----------------------------------------------------------
+   CONFIRMATION PAGE ICON PULSE
+   ----------------------------------------------------------- */
+@keyframes pop-in {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.confirmation-icon {
+  animation: pop-in .5s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+
+/* -----------------------------------------------------------
+   TABLE
+   ----------------------------------------------------------- */
+.table th {
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE TWEAKS
+   ----------------------------------------------------------- */
+@media (max-width: 576px) {
+  .product-img-wrap { height: 150px; }
+  .hero-banner { padding: 2rem 1rem !important; }
+}
